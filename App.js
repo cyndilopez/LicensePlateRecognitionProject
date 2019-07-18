@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Button, Text} from 'react-native';
 import NavigationBar from 'react-native-navbar'
 
-import CameraPage from './components/CameraPage'
+import CameraPage from './components/camerpage.component'
 import Photo from './components/photo.component';
-
+import Information from './components/information.component'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import styles from './components/styles';
 
@@ -51,6 +51,7 @@ const RootStack = createStackNavigator(
     Home: HomeScreen,
     Camera: CameraPage,
     PhotoPage: Photo,
+    Info: Information,
   },
   {
     initialRouteName: 'Home',

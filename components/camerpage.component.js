@@ -3,7 +3,6 @@ import { Camera } from 'expo-camera';
 import { Text, View } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import Toolbar from './toolbar.component';
-import Photo from './photo.component';
 
 import styles from './styles'
 
@@ -35,7 +34,7 @@ class CameraPage extends React.Component {
   handleShortCapture = async () => {
       const photoData = await this.camera.takePictureAsync();
       this.setState({ capturing: false, captures: photoData })
-      this.props.navigation.navigate('PhotoPage', {captures: photoData})
+      this.props.navigation.navigate('PhotoPage', {captures: photoData, cameraType: this.state.cameraType})
   };
 
 

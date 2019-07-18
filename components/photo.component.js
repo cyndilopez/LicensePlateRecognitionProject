@@ -3,12 +3,19 @@ import { View, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 
 import styles from './styles';
+import { Camera } from 'expo-camera';
 
 function Photo (props) {
     console.log(props.navigation.state.params.captures)
     let {uri, height, width} = props.navigation.state.params.captures
-    height = (height/5)
-    width = (width/5)
+    if (props.navigation.state.params.cameraType == Camera.Constants.Type.back) {
+        height = (height/10)
+        width = (width/10)
+    } else {
+        height = (height/5)
+        width = (width/5)
+    }
+
     return (
     <View 
         horizontal={true}
@@ -19,16 +26,14 @@ function Photo (props) {
     </View>
     <View style={styles.galleryButton}>
         <Button
-            containerViewStyle={{width: '100%', marginLeft: 0}}            
             title="Retake"
-            onPress={() => this.props.navigation.navigate('Camera')}
+            onPress={() => props.navigation.navigate('Camera')}
         />
     </View>
     <View style={styles.galleryButton}>
         <Button
-            containerViewStyle={{width: '100%', marginLeft: 0}}            
-            title="Save"
-            onPress={() => this.props.navigation.navigate('Camera')}
+            title=" Save "
+            onPress={() => props.navigation.navigate('Info')}
         />
     </View>
       
