@@ -24,8 +24,6 @@ class CameraPage extends React.Component {
 
   setFlashMode = (flashMode) => {
     return () => {
-      console.log("flash button pressed")
-
       this.setState({ flashMode })
     }
   };
@@ -39,9 +37,6 @@ class CameraPage extends React.Component {
 
 
   render() {
-    if (this.state.captures != null){
-      console.log(this.state.captures["height"])}
-    
     const { hasCameraPermission, flashMode, cameraType, capturing } = this.state;
     if (hasCameraPermission === null) {
       return (<View ><Text>None</Text></View>);
@@ -58,7 +53,6 @@ class CameraPage extends React.Component {
               ref={camera => this.camera = camera}
               />
           </View>
-          {/* <Photo captures={captures}/> */}
 
           <Toolbar 
             capturing={capturing}

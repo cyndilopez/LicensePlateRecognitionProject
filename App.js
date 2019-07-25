@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, Button, Text} from 'react-native';
-import NavigationBar from 'react-native-navbar'
-
-import CameraPage from './components/camerpage.component'
+import NavigationBar from 'react-native-navbar';
+import CameraPage from './components/camerpage.component';
 import Photo from './components/photo.component';
-import Information from './components/information.component'
+import { LinearGradient } from 'expo-linear-gradient'
+import Information from './components/information.component';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import styles from './components/styles';
+import styles from './styles';
+import {primaryGradientArray} from './components/styles'
+import * as Font from 'expo-font'
+import { Provider as PaperProvider } from 'react-native-paper';
 
 class HomeScreen extends React.Component {
   
@@ -26,22 +29,29 @@ class HomeScreen extends React.Component {
     };
     
     return (
-      <View style={styles.container}>
-      <NavigationBar      
+
+      <View height = {1000} backgroundColor = {'red'}>
+
+      <NavigationBar 
        title = {titleConfig}
        height={50}
        rightButton = {rightButtonConfig}
        leftButton = {leftButtonConfig}
+       tintColor= {'red'}
+       fontFamily= 'robotomono-bolditalic'
+
        />
 
       <Button
+        
         title="Go to Camera"
         onPress={() => this.props.navigation.navigate('Camera')}
+        buttonStyle={styles.container}
+        fontSize = {20}
       />
+
       </View>
-    //   <View>
-    //     <CameraPage />
-    // </View>
+
     );
   }
 }
@@ -61,8 +71,18 @@ const RootStack = createStackNavigator(
 const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
+  componentDidMount() {
+    Font.loadAsync({
+      'robotomono-regular': require('./assets/fonts/RobotoMono-Regular.ttf'),
+      'robotomono-bolditalic': require('./assets/fonts/RobotoMono-BoldItalic.ttf')
+    });
+  }
   render() {
-    return <AppContainer />;
+ 
+    return (
+        <AppContainer/>
+
+    )
   }
 }
 

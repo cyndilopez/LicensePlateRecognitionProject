@@ -6,9 +6,8 @@ const primaryEnd = '#d13e60';
 export const primaryGradientArray = [primaryStart, primaryEnd];
 
 export default StyleSheet.create({
-    
     container: {
-        color: 'red'
+        color: '#9FA8DA'
     },
     preview: {
         height: winHeight+50,
