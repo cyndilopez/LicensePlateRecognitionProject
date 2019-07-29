@@ -6,6 +6,7 @@ import { Button, Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {Dimensions } from 'react-native';
+import Loader from './loader.component';
 
 const { width: winWidth, height: winHeight } = Dimensions.get('window');
 
@@ -14,6 +15,7 @@ class Information extends React.Component {
         vehInfoView: false,
         buttonView: true,
         vehInfo: null,
+        loading: false,
     };
 
     getVehicleInfo = () => {
@@ -36,12 +38,15 @@ class Information extends React.Component {
           ),}
     };
 
-    displayInfo = () => {
-        fetch("http://172.24.27.93:5000/predict")
+    displayInfo = async () => {
+        this.setState({
+            loading: true,
+        });
+        await fetch("http://172.24.27.93:5000/predict")
             .then(response => response.json()) 
             .then((responseJson) => {
                 console.log("upload success", responseJson.plate);
-                this.setState({vehInfoView: true,
+                this.setState({loading: false, vehInfoView: true,
                     buttonView: false, vehInfo: responseJson})
             })
             .catch(error => {
@@ -77,9 +82,10 @@ render() {
 
     return (
         <View style={styles.infoContainer}>
-            <View style = {[{width: width, height: height}]} key={uri}>
-                <Image source={ this.props.navigation.state.params.captures } 
-                style={{width: width, height: height}}/>
+            <Loader loading={this.state.loading} />
+                <View style = {[{width: width, height: height}]} key={uri}>
+                    <Image source={ this.props.navigation.state.params.captures } 
+                    style={{width: width, height: height}}/>
             </View>
 
             {
