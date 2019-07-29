@@ -39,7 +39,7 @@ class CameraPage extends React.Component {
   render() {
     const { hasCameraPermission, flashMode, cameraType, capturing } = this.state;
     if (hasCameraPermission === null) {
-      return (<View ><Text>None</Text></View>);
+      return (<View ><Text></Text></View>);
     } else if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     } else {

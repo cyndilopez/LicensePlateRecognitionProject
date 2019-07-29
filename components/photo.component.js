@@ -7,7 +7,16 @@ import { Camera } from 'expo-camera';
 
 import {RNS3} from 'react-native-s3-upload'
 
-// import { S3_BUCKET, S3_REGION, S3_KEY, S3_SECRET_ACCESS_KEY } from .env
+import {Dimensions } from 'react-native';
+
+const { width: winWidth, height: winHeight } = Dimensions.get('window');
+
+let keyz = require('./keyz.json')
+S3_BUCKET = keyz[0].S3_BUCKET
+S3_REGION = keyz[0].S3_REGION
+S3_KEY = keyz[0].S3_KEY
+S3_SECRET_ACCESS_KEY = keyz[0].S3_SECRET_ACCESS_KEY
+
 
 console.log(S3_BUCKET)
 console.log(S3_REGION)
@@ -46,8 +55,8 @@ class Photo extends React.Component {
             });
 
         console.log('handling photo')
-
         // fetch("http://172.24.27.93:5000/detect")
+
         fetch("http://flask-env.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/detect")
             .then(response => response.json()) 
             .then((responseJson) => {
@@ -55,9 +64,9 @@ class Photo extends React.Component {
                 alert("Upload success!");
                 this.setState({
                     plate: responseJson.plate},
-                    () => this.props.navigation.navigate('Info', {plate: this.state.plate})
-                   )
-              })
+                    () => this.props.navigation.navigate('Info', {plate: this.state.plate, captures: this.props.navigation.state.params.captures, cameraType: this.props.navigation.state.params.cameraType})
+                   )}
+                )
             
             .catch(error => {
                 console.log("upload error", error);
@@ -69,8 +78,8 @@ class Photo extends React.Component {
     render() {
         let {uri, height, width} = this.props.navigation.state.params.captures
         if (this.props.navigation.state.params.cameraType == Camera.Constants.Type.back) {
-            height = (height/10)
-            width = (width/10)
+            height = (height/8)
+            width = (width/8)
         } else {
             height = (height/5)
             width = (width/5)
@@ -85,13 +94,27 @@ class Photo extends React.Component {
             </View>
             <View style={styles.galleryButton}>
                 <Button 
+                    buttonStyle={{
+                        backgroundColor:'#f4511e',
+                        borderRadius: 20,
+                        height: winHeight/15,
+                        width: winWidth/2.5,
+                    }}
+                    raised={true}
                     title="Retake"
                     onPress={() => this.props.navigation.navigate('Camera')}
                 />
             </View>
             <View style={styles.galleryButton}>
                 <Button 
-                    title=" Save "
+                    buttonStyle={{
+                        backgroundColor:'#f4511e',
+                        borderRadius: 20,
+                        height: winHeight/15,
+                        width: winWidth/2.5,
+                    }}
+                    raised={true}
+                    title="Save!"
                     onPress={this.handleUploadPhoto}
                 />
             </View>

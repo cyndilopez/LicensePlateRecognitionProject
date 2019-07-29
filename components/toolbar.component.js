@@ -26,16 +26,16 @@ function Toolbar (props) {
                         <Ionicons
                             name={flashMode == CameraFlashModes.on ? "md-flash" : 'md-flash-off'}
                             color="white"
-                            size={100}
+                            size={75}
                         />
                     </TouchableOpacity>
                 </Col>
                 <Col size={2} style={styles.alignCenter}>
-                    <TouchableHighlight
+                    <TouchableWithoutFeedback
                         onPress={props.onShortCapture}>
                         <View style={[styles.captureBtn, capturing && styles.captureBtnActive]}>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableWithoutFeedback>
                 </Col>
                 <Col style={styles.alignCenter}>
                     <TouchableOpacity onPress={() => props.setCameraType(
@@ -44,7 +44,7 @@ function Toolbar (props) {
                         <Ionicons
                             name="md-reverse-camera"
                             color="white"
-                            size={100}
+                            size={75}
                         />
                     </TouchableOpacity>
                 </Col>

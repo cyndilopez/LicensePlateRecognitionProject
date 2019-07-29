@@ -10,6 +10,9 @@ export default StyleSheet.create({
     container: {
         color: 'red'
     },
+    homeCameraButton: {
+        backgroundColor: '#f4511e',
+    },
     preview: {
         height: winHeight+50,
         width: winWidth,
@@ -31,10 +34,10 @@ export default StyleSheet.create({
         top: 0,
     },
     captureBtn: {
-        width: 120,
-        height: 120,
-        borderWidth: 20,
-        borderRadius: 120,
+        width: 100,
+        height: 100,
+        borderWidth: 10,
+        borderRadius: 100,
         borderColor: "#FFFFFF",
     },
     captureBtnActive: {
