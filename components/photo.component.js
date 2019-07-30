@@ -69,7 +69,7 @@ class Photo extends React.Component {
 
         // fetch("http://flask-env.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/detect")
 
-        await fetch("http://172.24.27.93:5000/detect")
+        await fetch("http://192.168.1.119:5000/detect")
             .then(response => response.json()) 
             .then((responseJson) => {
                 console.log("upload success", responseJson.plate);

@@ -42,7 +42,16 @@ class Information extends React.Component {
         this.setState({
             loading: true,
         });
-        await fetch("http://172.24.27.93:5000/predict")
+        let data = {
+            method: 'POST',
+            body: JSON.stringify({
+              plate: this.props.navigation.state.params.plate
+            }),
+            headers: {
+              'Accept':       'application/json',
+              'Content-Type': 'application/json'            }
+          }
+        await fetch("http://192.168.1.119:5000/predict", data)
             .then(response => response.json()) 
             .then((responseJson) => {
                 console.log("upload success", responseJson.plate);
