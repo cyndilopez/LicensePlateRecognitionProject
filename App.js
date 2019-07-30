@@ -1,16 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, Imaf} from 'react-native';
 import { Button, ThemeProvider } from 'react-native-elements'
-import NavigationBar from 'react-native-navbar';
 import CameraPage from './components/camerpage.component';
 import Photo from './components/photo.component';
-import { LinearGradient } from 'expo-linear-gradient'
 import Information from './components/information.component';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import styles from './styles';
-import {primaryGradientArray} from './components/styles'
 import * as Font from 'expo-font'
-import { Provider as PaperProvider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 class HomeScreen extends React.Component {
@@ -43,58 +39,23 @@ class HomeScreen extends React.Component {
       }
   };
   render() {
-    console.log(this.props)
-    const titleConfig = {
-      title: 'LPR - Ada',
-    };
-
-    const rightButtonConfig = {
-      title: 'Camera',
-      handler: () => this.props.navigation.navigate('Camera'),
-    };
-
-    const leftButtonConfig = {
-      title: 'Home',
-      handler: () => this.props.navigation.navigate('Home'),
-    };
-    // const theme = {
-    //   Button: {
-    //     raised: true,
-    //   },
-    // };
-    console.log(this.state.fontLoaded)
-
     return (
       <ThemeProvider theme={this.props.navigation.state.params.theme}>
         <ImageBackground 
-        source={require('./assets/background-blue-sky-california-small.jpg')} 
-        style={styles.backgroundImage}>
-        {/* <NavigationBar 
-        title = {titleConfig}
-        height={50}
-        rightButton = {rightButtonConfig}
-        leftButton = {leftButtonConfig}
-        //  tintColor= {'red'}
-        fontFamily= 'robotomono-bolditalic'
-
-        /> */}
-
+          source={require('./assets/background-blue-sky-california-small.jpg')} 
+          style={styles.backgroundImage}>
         </ImageBackground>
         <View style={[styles.alignCenter, styles.overlay]}>
-
-        { 
-          this.state.fontLoaded ? (
-            <Text style={[styles.homepageText]}>License Plate This</Text>
-            ) : null
-        }
- 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Camera')} style={[styles.button]}
-        backgroundColor={'rgba(0,0,0,1.0)'}>      
-
-          <Icon name="camera-retro"size={40} color="white"/>
-          <Text style={[styles.text]}>Take a Picture</Text>
-            
-        </TouchableOpacity>
+          { 
+            this.state.fontLoaded ? (
+              <Text style={[styles.homepageText]}>License Plate This</Text>
+              ) : null
+          }
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Camera')} style={[styles.button]}
+          backgroundColor={'rgba(0,0,0,1.0)'}>      
+            <Icon name="camera-retro"size={40} color="white"/>
+            <Text style={[styles.text]}>Take a Picture</Text>
+          </TouchableOpacity>
         </View>
       </ThemeProvider>
     );
@@ -103,7 +64,6 @@ class HomeScreen extends React.Component {
 
 
 const RootStack = createStackNavigator(
-  
   {
     Home: {screen: HomeScreen, params: {theme:{
       Button: {
@@ -117,7 +77,6 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
-    /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#f4511e',
@@ -133,8 +92,6 @@ const RootStack = createStackNavigator(
 const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
-
-
   componentDidMount() {
     Font.loadAsync({
       'robotomono-regular': require('./assets/fonts/RobotoMono-Regular.ttf'),
@@ -144,7 +101,6 @@ export default class App extends React.Component {
   render() {
     return (
         <AppContainer/>
-
     )
   }
 }

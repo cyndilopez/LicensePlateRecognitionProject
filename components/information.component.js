@@ -51,7 +51,8 @@ class Information extends React.Component {
               'Accept':       'application/json',
               'Content-Type': 'application/json'            }
           }
-        await fetch("http://192.168.1.119:5000/predict", data)
+        // await fetch("http://192.168.1.119:5000/predict", data)
+        await fetch("flask-env2.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/predict", data)
             .then(response => response.json()) 
             .then((responseJson) => {
                 console.log("upload success", responseJson.plate);
@@ -71,7 +72,7 @@ class Information extends React.Component {
             {title: "Registration Year", data: [this.state.vehInfo["registration_year"]]},
             {title: "Make", data: [this.state.vehInfo["car_make"]]},
             {title: "Model", data: [this.state.vehInfo["car_model"]]},
-            {title: "Color", data: [this.state.vehInfo["color"]]},
+            {title: "Body Style ", data: [this.state.vehInfo["body_style"]]},
             {title: "Vehicle Identification Number", data: [this.state.vehInfo["vehicle_identification_number"]]}
         ]
         return parsed_vehInfo
@@ -104,40 +105,28 @@ render() {
                         <Text style={styles.lpText}>{this.props.navigation.state.params.plate}</Text>
                     </Card>
                     <Button
-                    buttonStyle={{
-                        borderColor:'#f4511e',
-                        borderRadius: 20,
-                        borderWidth: 2,
-                        borderStyle: 'solid',
-                        height: winHeight/15,
-                        width: winWidth/2.5,
-                    }}
+                    buttonStyle={styles.detailsButton}
                     type= 'outline'
                     raised={true}
                     title='Details'
                     titleStyle={{ color: 'black' }}
                     onPress={this.displayInfo}>
-
-
                 </Button>
             </View>) : null
             }
             {
                 this.state.vehInfoView ? (
-          <View style={{ borderWidth: 1, borderColor: "grey" }}>
+                <View style={styles.container}>
                     <Card height={winHeight}> 
                         <Text style={styles.lpText}>{this.props.navigation.state.params.plate}</Text>
                         <SectionList
                         sections={this.parse_json_info()}
                         renderItem={({ item }) => <Text 
-                        style={{height: 40, width: winWidth, fontSize: 16, paddingTop: 10,
-                        paddingRight: 10, paddingLeft: 10, paddingBottom: 10}}
+                        style={styles.items}
                         >{item}</Text>}
                         renderSectionHeader={({ section }) => (
                         <Text 
-                        style={{paddingTop: 2, paddingLeft: 10, 
-                            paddingRight: 10, paddingBottom: 2, fontSize: 14, 
-                            fontWeight: 'bold', backgroundColor: 'rgba(247,247,247,1.0)'}}>{section.title}</Text>
+                        style={styles.header}>{section.title}</Text>
                         )} 
                         keyExtractor={(item, index) => index}
                         />

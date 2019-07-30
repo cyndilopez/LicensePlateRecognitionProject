@@ -7,22 +7,13 @@ import { Camera } from 'expo-camera';
 
 import {RNS3} from 'react-native-s3-upload'
 
-import {Dimensions } from 'react-native';
 import Loader from './loader.component'
-
-const { width: winWidth, height: winHeight } = Dimensions.get('window');
 
 let keyz = require('./keyz.json')
 S3_BUCKET = keyz[0].S3_BUCKET
 S3_REGION = keyz[0].S3_REGION
 S3_KEY = keyz[0].S3_KEY
 S3_SECRET_ACCESS_KEY = keyz[0].S3_SECRET_ACCESS_KEY
-
-
-console.log(S3_BUCKET)
-console.log(S3_REGION)
-console.log(S3_KEY),
-console.log(S3_SECRET_ACCESS_KEY)
 
 class Photo extends React.Component {
     constructor(props) {
@@ -67,19 +58,17 @@ class Photo extends React.Component {
 
         console.log('handling photo')
 
-        // fetch("http://flask-env.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/detect")
-
-        await fetch("http://192.168.1.119:5000/detect")
+        // await fetch("http://192.168.1.119:5000/detect")
+        await fetch("flask-env2.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/detect")
             .then(response => response.json()) 
             .then((responseJson) => {
                 console.log("upload success", responseJson.plate);
-                alert("Upload success!");
+                // alert("Upload success!");
                 this.setState({
                     plate: responseJson.plate, loading: false},
                     () => this.props.navigation.navigate('Info', {plate: this.state.plate, captures: this.props.navigation.state.params.captures, cameraType: this.props.navigation.state.params.cameraType})
                    )}
                 )
-            
             .catch(error => {
                 console.log("upload error", error);
                 alert("Upload failed!");
@@ -99,39 +88,27 @@ class Photo extends React.Component {
         return (
             <View 
                 horizontal={true}
-                style={styles.imageContainer} 
-            >
-            <Loader loading={this.state.loading}/>
-            <View style = {[{width: width, height: height}]} key={uri}>
-                <Image source={ this.props.navigation.state.params.captures } style={{width: width, height: height}}/>
-            </View>
-            <View style={styles.galleryButton}>
-                <Button 
-                    buttonStyle={{
-                        backgroundColor:'#f4511e',
-                        borderRadius: 20,
-                        height: winHeight/15,
-                        width: winWidth/2.5,
-                    }}
-                    raised={true}
-                    title="Retake"
-                    onPress={() => this.props.navigation.navigate('Camera')}
-                />
-            </View>
-            <View style={styles.galleryButton}>
-                <Button 
-                    buttonStyle={{
-                        backgroundColor:'#f4511e',
-                        borderRadius: 20,
-                        height: winHeight/15,
-                        width: winWidth/2.5,
-                    }}
-                    raised={true}
-                    title="Save!"
-                    onPress={this.handleUploadPhoto}
-                />
-            </View>
-            
+                style={styles.imageContainer}>
+                <Loader loading={this.state.loading}/>
+                <View style = {[{width: width, height: height}]} key={uri}>
+                    <Image source={ this.props.navigation.state.params.captures } style={{width: width, height: height}}/>
+                </View>
+                <View style={styles.galleryButton}>
+                    <Button 
+                        buttonStyle={styles.photoButton}
+                        raised={true}
+                        title="Retake"
+                        onPress={() => this.props.navigation.navigate('Camera')}
+                    />
+                </View>
+                <View style={styles.galleryButton}>
+                    <Button 
+                        buttonStyle={styles.photoButton}
+                        raised={true}
+                        title="Save!"
+                        onPress={this.handleUploadPhoto}
+                    />
+                </View>
             </View>
         )};
 }

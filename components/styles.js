@@ -1,17 +1,14 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width: winWidth, height: winHeight } = Dimensions.get('window');
-const primaryStart = '#f18a69';
-const primaryEnd = '#d13e60';
-export const primaryGradientArray = [primaryStart, primaryEnd];
 
 export default StyleSheet.create({
-    
-    container: {
-        color: 'red'
-    },
     homeCameraButton: {
         backgroundColor: '#f4511e',
+    },
+    container: {
+        borderWidth: 1,
+        borderColor: "grey",
     },
     preview: {
         height: winHeight+50,
@@ -40,19 +37,6 @@ export default StyleSheet.create({
         borderRadius: 100,
         borderColor: "#FFFFFF",
     },
-    captureBtnActive: {
-        width: 200,
-        height: 200,
-    },
-    captureBtnInternal: {
-        width: 76,
-        height: 76,
-        borderWidth: 2,
-        borderRadius: 76,
-        backgroundColor: "red",
-        borderColor: "transparent",
-    },
-
     imageContainer: { 
         width: winWidth, 
         height: winHeight,
@@ -63,23 +47,51 @@ export default StyleSheet.create({
         marginTop: 10, 
        
     },
-
     galleryButton: {
         flex: 1,
         justifyContent: 'center',  
 
     },
-
+    photoButton: {
+        backgroundColor:'#f4511e',
+        borderRadius: 20,
+        height: winHeight/15,
+        width: winWidth/2.5    
+    },
     infoContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-
     },
-
     lpText: {
         fontFamily: 'robotomono-bolditalic',
         fontSize: 20,
+    },
+    detailsButton: {
+        borderColor:'#f4511e',
+        borderRadius: 20,
+        borderWidth: 2,
+        borderStyle: 'solid',
+        height: winHeight/15,
+        width: winWidth/2.5,
+    },
+    items: {
+        height: 40, 
+        width: winWidth, 
+        fontSize: 16, 
+        paddingTop: 10,
+        paddingRight: 10, 
+        paddingLeft: 10, 
+        paddingBottom: 10
+    },
+    header: {
+        paddingTop: 2, 
+        paddingLeft: 10, 
+        paddingRight: 10, 
+        paddingBottom: 2, 
+        fontSize: 14, 
+        fontWeight: 'bold', 
+        backgroundColor: 'rgba(247,247,247,1.0)' 
     },
     modalBackground: {
         flex: 1,

@@ -37,7 +37,7 @@ class CameraPage extends React.Component {
 
 
   render() {
-    const { hasCameraPermission, flashMode, cameraType, capturing } = this.state;
+    const { hasCameraPermission, flashMode, cameraType} = this.state;
     if (hasCameraPermission === null) {
       return (<View ><Text></Text></View>);
     } else if (hasCameraPermission === false) {
@@ -55,7 +55,6 @@ class CameraPage extends React.Component {
           </View>
 
           <Toolbar 
-            capturing={capturing}
             flashMode={flashMode}
             cameraType={cameraType}
             setFlashMode={this.setFlashMode}
