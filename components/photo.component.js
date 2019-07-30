@@ -27,8 +27,6 @@ class Photo extends React.Component {
     }
     
     handleUploadPhoto = async () => {
-        console.log(this.props.navigation.state.params.captures.uri)
-
         this.setState({
             loading: true
         })

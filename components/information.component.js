@@ -79,7 +79,6 @@ class Information extends React.Component {
     }
 
 render() {
-    console.log(this.props.navigation.state.params.plate)
     let {uri, height, width} = this.props.navigation.state.params.captures
 
     if (this.props.navigation.state.params.cameraType == Camera.Constants.Type.back) {
