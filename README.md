@@ -7,10 +7,10 @@ This app is not available for download on any app stores. However, this will des
 
 # Developer setup
 
-* Install Expo CLI by running: <npm install -g expo-cli>
+* Install Expo CLI by running: `npm install -g expo-cli`
 * Fork and clone this repo
 * cd into root directory
-* download dependencies with <npm install>
+* download dependencies with `npm install`
 
 # Using the app
 
@@ -25,6 +25,6 @@ Main page
 ![Main](../assets/page1.png?raw=true)
 
 ## Limitations
-Unfortunately, this app was created with limited API calls and or due to cost limitations, may be taken off the server it is currently hosted on. In the event that it does not work, please contact me at cyndilopez6@gmail.com.
+Unfortunately, this app was created with limited API calls or due to cost limitations, may be taken off the server it is currently hosted on. In the event that it does not work, please contact me at cyndilopez6@gmail.com.
 
 
