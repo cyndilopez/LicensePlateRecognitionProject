@@ -52,7 +52,9 @@ class Information extends React.Component {
               'Content-Type': 'application/json'            }
           }
         // await fetch("http://192.168.1.119:5000/predict", data)
-        await fetch("flask-env2.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/predict", data)
+        // await fetch("http://flask-env2.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/predict", data)
+        // await fetch("http://192.168.1.119:5000/predict", data)
+        await fetch("http://flask-env2.mpf3fzmdm2.us-east-2.elasticbeanstalk.com/predict", data)
             .then(response => response.json()) 
             .then((responseJson) => {
                 console.log("upload success", responseJson.plate);

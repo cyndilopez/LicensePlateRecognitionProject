@@ -46,8 +46,8 @@ export default StyleSheet.create({
     },
     overlay: {
         position: 'absolute',
-        top: 300,
+        top: 420,
         height: 5,
-        left: 10,
+        left: 8,
     },
 });

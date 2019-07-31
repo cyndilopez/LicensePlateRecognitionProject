@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, Imaf} from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground} from 'react-native';
 import { Button, ThemeProvider } from 'react-native-elements'
 import CameraPage from './components/camerpage.component';
 import Photo from './components/photo.component';
@@ -23,6 +23,7 @@ class HomeScreen extends React.Component {
 
   static navigationOptions = ({navigation}) => {
     return {
+    header: null,
     headerRight: (
       <Button
       buttonStyle={styles.homeCameraButton}
