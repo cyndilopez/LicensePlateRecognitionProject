@@ -1,10 +1,9 @@
 # License Plate This
-## License plate recognition app
 This app allows a user to take a picture of a California license plate, and returns back basic vehicle information.
 
 It was trained on 35,000+ images of California license plates. The backend of this app is described here: https://github.com/cyndilopez/LPR-API2
 
-This app is not available for download on any app stores. However, this will describe how to get the app working on your phone using this Github respository.
+This app is not available for download on any app stores. However, this will describe how to get the app working on your phone and how to set it up for editing purposes.
 
 # Developer setup
 
@@ -24,5 +23,8 @@ https://expo.io/@cyndilopez369/LicensePlateRecognitionProject
 
 Main page
 ![Main](../assets/page1.png?raw=true)
+
+## Limitations
+Unfortunately, this app was created with limited API calls and or due to cost limitations, may be taken off the server it is currently hosted on. In the event that it does not work, please contact me at cyndilopez6@gmail.com.
 
 
