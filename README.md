@@ -23,6 +23,6 @@ https://expo.io/@cyndilopez369/LicensePlateRecognitionProject
 ## How-to
 
 Main page
-[Main page](../assets/page1.png?raw=true)
+![Main](../assets/page1.png?raw=true)
 
 
